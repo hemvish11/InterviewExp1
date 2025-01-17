@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSA Code Snippet</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+    }
+    pre {
+      background-color: #282c34;
+      color: #ffffff;
+      padding: 15px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Consolas, Monaco, "Courier New", monospace;
+    }
+    .comment {
+      color: #6a9955; /* Green color for comments */
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <h1>DSA Code Snippet</h1>
+
+  <pre>
+<code>
+// <span class="comment">Q1. Remove duplicates</span>
+const a = [2, 5, 7, 9, 0, 2, 4, 3, 7, 10, 1, 1, 2, 1, 12, 6]
+
+let set = {}
+
+let ans = []
+for (let i = 0; i < a.length; i++) { // <span class="comment">o(n)</span>
+    let key = a[i]
+    if (!set[key]) {
+        set = { ...set, [key]: i }
+        ans.push(a[i])
+    }
+}
+// console.log(ans)
+
+let firstIdx = -1
+let secondIdx = -1
+
+// <span class="comment">store the indexs</span>
+for (let i = 0; i < ans.length; i++) { // <span class="comment">o(n)</span>
+    let key = ans[i]
+    set = { ...set, [key]: i - 1 }
+}
+
+console.log(ans)
+
+// <span class="comment">Q2. find the indexs whose sum = 21</span>
+for (let i = 0; i < ans.length; i++) {
+    if (set[21 - ans[i]]) {
+        firstIdx = set[21 - ans[i]]
+        secondIdx = i
+        break
+    }
+}
+console.log(firstIdx)
+console.log(secondIdx)
+</code>
+  </pre>
+</body>
+</html>
